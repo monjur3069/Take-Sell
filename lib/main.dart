@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:take_sell/pages/dashboard_screen.dart';
 import 'package:take_sell/pages/login_screen.dart';
@@ -31,11 +32,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: scaffoldBg,
       ),
+      builder: EasyLoading.init(),
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         LoginScreen.routeName: (context) => const LoginScreen(),
-        SignUpScreen.routeName: (context) => SignUpScreen(),
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
         DashboardScreen.routeName: (context) => const DashboardScreen(),
       },
     );

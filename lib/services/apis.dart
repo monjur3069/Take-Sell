@@ -1,8 +1,12 @@
 class Apis{
-  static String baseUrl = "https://www.beta.takesell.com.bd/api/";
+  static String baseUrl = "https://www.beta.takesell.com.bd/api/v2/";
 
-  static String homeSlider = "${baseUrl}v2/sliders";
-  static String homeCategory = "${baseUrl}v2/categories/featured";
-  static String homeTodaysDeal = "${baseUrl}v2/products/todays-deal";
-  static String homeFeaturedProduct = "${baseUrl}v2/products/featured";
+  static String login = "${baseUrl}auth/login";
+  static String signUp = "${baseUrl}auth/signup";
+
+
+  static String homeSlider = "${baseUrl}sliders";
+  static String homeCategory = "${baseUrl}categories/featured";
+  static String homeTodaysDeal = "${baseUrl}products/todays-deal";
+  static String homeFeaturedProduct = "${baseUrl}products/featured";
 }

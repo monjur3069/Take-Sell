@@ -5,6 +5,7 @@ class CustomTextField extends StatefulWidget {
   final IconData icon;
   final String label;
   final bool isSecret;
+  final TextEditingController controller;
   final List<TextInputFormatter>? inputFormatters;
   final String? initialValue;
   final bool readOnly;
@@ -16,7 +17,7 @@ class CustomTextField extends StatefulWidget {
     this.isSecret = false,
     this.inputFormatters,
     this.initialValue,
-    this.readOnly = false,
+    this.readOnly = false, required this.controller,
   });
 
   @override
@@ -38,20 +39,21 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.only(bottom: 14),
       child: TextFormField(
         readOnly: widget.readOnly,
+        controller: widget.controller,
         initialValue: widget.initialValue,
         inputFormatters: widget.inputFormatters,
         obscureText: isObscure,
         decoration: InputDecoration(
           suffixIcon: widget.isSecret
               ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isObscure = !isObscure;
-                    });
-                  },
-                  icon:
-                      Icon(isObscure ? Icons.visibility : Icons.visibility_off),
-                )
+            onPressed: () {
+              setState(() {
+                isObscure = !isObscure;
+              });
+            },
+            icon:
+            Icon(isObscure ? Icons.visibility : Icons.visibility_off),
+          )
               : null,
           prefixIcon: Icon(widget.icon),
           labelText: widget.label,
@@ -61,6 +63,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
             borderRadius: BorderRadius.circular(45),
           ),
         ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'This field must not be empty';
+          }
+          return null;
+        },
       ),
     );
   }
