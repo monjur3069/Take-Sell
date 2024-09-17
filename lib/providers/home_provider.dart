@@ -71,6 +71,7 @@ class HomeProvider extends ChangeNotifier{
     homeSliderModel = await HomeSliderService.fetchHomeSliderData(context);
     newSliderList = homeSliderModel?.data ?? [];
     isSliderDataLoaded = true;
+    images.clear();
     for (var i in newSliderList) {
       if (i.photo != null) {
         images.add(i.photo);
